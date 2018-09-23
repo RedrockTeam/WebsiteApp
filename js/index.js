@@ -81,3 +81,22 @@ $window.mousemove(function (e) {
 		$("#up").css("display","none");
 	}
 });
+
+//微信遮罩
+$(window).on('load', function() {
+	var winHeight = $(window).height()
+	function isWechat() {
+		var ua = navigator.userAgent.toLowerCase()
+		if (ua.match(/MicroMessenger/i) == "micromessenger") {
+			return true
+		}
+		else {
+			return false
+		}
+	}
+	var wechat = isWechat()
+	if (wechat) {
+		$('.weixin-tip').css('height', winHeight)
+		$('.weixin-tip').show()
+	}
+})
