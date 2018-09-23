@@ -1,3 +1,21 @@
+//微信遮罩
+$(window).on('load', function(e) {
+	//var winHeight = $(window).height()
+	function isWeiXin(){
+		var ua = window.navigator.userAgent.toLowerCase();
+		if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+			return true
+		}else{
+			return false
+		}
+	}
+	if (isWeiXin()) {
+		//$('.weixin-tip').css('height', winHeight)
+		e.stopPropagation()
+		$('.weixin-tip').show()
+	}
+})
+
 //放大镜
 var $Screen = $(".screen");
 var more = $(".more1");
@@ -82,21 +100,3 @@ $window.mousemove(function (e) {
 	}
 });
 
-//微信遮罩
-$(window).on('load', function() {
-	var winHeight = $(window).height()
-	function isWechat() {
-		var ua = navigator.userAgent.toLowerCase()
-		if (ua.match(/MicroMessenger/i) == "micromessenger") {
-			return true
-		}
-		else {
-			return false
-		}
-	}
-	var wechat = isWechat()
-	if (wechat) {
-		$('.weixin-tip').css('height', winHeight)
-		$('.weixin-tip').show()
-	}
-})
